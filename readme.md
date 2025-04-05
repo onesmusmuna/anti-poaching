@@ -7,7 +7,7 @@
 1. - [x] Project Idea Definition
 2. - [x] Entity-Relationship Diagram (ERD)
 3. - [x] Database Schema
-4. - [ ] SQL Code Implementation
+4. - [x] SQL Code Implementation
 5. - [x] GitHub Collaboration
 6. - [ ] Final Presentation and Report
 
