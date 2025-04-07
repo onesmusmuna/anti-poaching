@@ -1,0 +1,173 @@
+--Normalization
+
+  Ranger Table
+
+  ranger_id	name	contact_number	rank	assigned_area
+1	Onesmus Muna	932540086	Senior Ranger	North Area
+2	kambale mulumba	987566534	Senior Ranger	East Area
+3	Douglas Elton	911098436	Senior Ranger	West Area
+4	David Mwangi	957720967	Senior Ranger	Center
+5	William Mwaijande	988452610	Senior Ranger	South Area
+
+Patrol Table
+
+  patrol_id	start_time	end_time	area_covered	ranger_id
+1	24/03/2025 06:30	24/03/2025 12:30	North Area	1
+2	26/03/2025 06:30	26/03/2025 12:30	East Area	2
+3	28/03/2025 06:30	28/03/2025 12:30	West Area	3
+4	30/03/2025 06:30	30/03/2025 12:30	Center	4
+5	02/03/2025 06:30	02/03/2025 12:30	South Area	5
+
+
+Incident table
+
+  incident_id	date	time	location	type	severity	description	ranger_id
+701	24/03/2025	16:38:00	Center	Habitat destruction	Moderate	Tree cutting observed	4
+702	28/03/2025	11:06:00	North Area	Poaching	severe	Lion was found dead	1
+703	02/04/2025	07:30:00	East Area	Wildlife Conflict	minor	Cows attacked by lions	2
+
+
+Report table
+
+  report_id	suspect_description	evidence_collected	action_taken	incident_id
+1	Local Residents	Cut trees	Conducted Awareness	701
+2	Poacher	Lion carcass	Alerted Authorities	702
+3	Patrol	No Patrol	Increased Patrols	703
+
+
+Protected_Area table
+
+  protected_area_id	name	location	area_size	threat_level
+101	Nairobi National Park	NAIROBI	117	Moderate
+102	Tsavo National Park	TAITA-TAVETA	22000	High
+103	Samburu National Reserve	SAMBURU County	165	Moderate
+
+
+Wildlife table
+
+  wildlife_id	species_name	population_count	conservation_status	protected_area_id
+1	African Lion	50	Vulnerable	101
+2	Zebra	2649	Least Concern	103
+3	Masai Giraffe	100	Vulnerable	101
+4	Black Rhino	104	Critically Endangered	101
+5	Elephant	12840	moderate	102
+
+
+--Tables and Fields
+--Ranger:--
+CREATE TABLE Ranger (
+    Ranger_ID INT PRIMARY KEY,
+	Name VARCHAR(255),
+	Contact_Number INT,
+	Rank VARCHAR(100),
+	Assigned_Area VARCHAR(255)
+);
+
+INSERT INTO Ranger (Ranger_ID, Name, Contact_Number, Rank, Assigned_Area) VALUES
+('001', 'Onesmus Muna', '0932540086', 'Senior Ranger', 'North Area'),
+('002', 'kambale mulumba', '0987566534', 'Senior Ranger', 'East Area'),
+('003', 'Douglas Elton', '0911098436', 'Senior Ranger', 'West Area'),
+('004', 'David Mwangi', '0957720967', 'Senior Ranger', 'Center'),
+('005', 'William Mwaijande', '0988452610', 'Senior Ranger', 'South Area');
+
+--Patrol:--
+  CREATE TABLE patrol (
+    Patrol_ID INT PRIMARY KEY,
+	Start_time TIMESTAMP,
+	End_time TIMESTAMP,
+	Area_covered VARCHAR(255),
+	Ranger_ID INT,
+	FOREIGN KEY (Ranger_ID) REFERENCES Ranger(ranger_ID)
+);
+
+INSERT INTO Patrol (Patrol_ID, Start_Time, End_time, Area_Covered, Ranger_ID) VALUES
+('1', '2025-03-24 06:30:00', '2025-03-24 12:30:00', 'North Area', '001'),
+('2', '2025-03-26 06:30:00', '2025-03-26 12:30:00', 'East Area', '002'),
+('3', '2025-03-28 06:30:00', '2025-03-28 12:30:00', 'West Area', '003'),
+('4', '2025-03-30 06:30:00', '2025-03-30 12:30:00', 'Center', '004'),
+('5', '2025-03-02 06:30:00', '2025-03-02 12:30:00', 'South Area', '005');
+
+
+--Incident:--
+  CREATE TABLE Incident (
+    Incident_ID INT PRIMARY KEY,
+	Date DATE,
+	Time TIME,
+	Location VARCHAR(255),
+	Type VARCHAR(100),
+	Severity VARCHAR(100),
+	Description TEXT,
+	Ranger_ID INT,
+	FOREIGN KEY(Ranger_ID) REFERENCES Ranger(Ranger_ID)
+);
+
+INSERT INTO Incident (Incident_ID, Date, Time, Location, Type, Severity, Description, Ranger_ID) VALUES
+('701', '24-03-2025', '16:38:00', 'Center', 'Habitat destruction', 'Moderate', 'Tree cutting observed', '004'),
+('702', '28-03-2025', '11:06:00', 'North Area', 'Poaching', 'severe', 'Lion was found dead', '001'),
+('703', '02-04-2025', '7:30:00', 'East Area', 'Wildlife Conflict', 'minor', 'Cows attacked by lions', '002');
+
+--Report:--
+  CREATE TABLE Report (
+    Report_ID INT PRIMARY KEY,
+	Suspect_Description TEXT,
+	Evidence_Collected TEXT,
+	Action_Taken VARCHAR(100),
+	Incident_ID INT,
+	FOREIGN KEY (Incident_ID) REFERENCES Incident(Incident_ID)
+);
+
+INSERT INTO Report (Report_ID, Suspect_Description, Evidence_Collected, Action_Taken, Incident_ID) VALUES
+('1', 'Local Residents', 'Cut trees', 'Conducted Awareness', '701'),
+('2', 'Unknown Poacher', 'Lion carcass', 'Alerted Authorities', '702'),
+('3', 'Unknown', 'N/A', 'Increased Patrols', '703');
+
+--Protected_Area:--
+  CREATE TABLE Protected_Area (
+    Protected_Area_ID INT PRIMARY KEY,
+	Name VARCHAR(255),
+	Location VARCHAR(255),
+	Area_Size FLOAT,
+	Threat_Level VARCHAR(100)
+);
+
+INSERT INTO Protected_Area (Protected_Area_ID, Name, Location, Area_Size, Threat_Level) VALUES
+('101', 'Nairobi National Park', 'NAIROBI', '117.0', 'Moderate'),
+('102', 'Tsavo National Park', 'TAITA-TAVETA', '22000.0', 'High'),
+('103', 'Samburu National Reserve', 'SAMBURU County', '165.0', 'Moderate');
+
+--Wildlife:--
+   CREATE TABLE WildLife (
+    WildLife_ID INT PRIMARY KEY,
+	Species_Name VARCHAR(255),
+	Population_Count INT,
+	Conservation_Status VARCHAR(100),
+	Protected_Area_ID INT,
+	FOREIGN KEY (Protected_Area_ID) REFERENCES Protected_Area(Protected_Area_ID)
+);
+
+INSERT INTO WildLife (WildLife_ID, Species_Name, Population_Count, Conservation_Status, Protected_Area_ID) VALUES
+('1', 'African Lion', '50', 'Vulnerable', '101'),
+('2', 'Zebra', '2649', 'Least Concern', '103'),
+('3', 'Masai Giraffe', '100', 'Vulnerable', '101'),
+('4', 'Black Rhino', '104', 'Critically Endangered', '101'),
+('5', 'Elephant', '12840', 'moderate', '102');
+
+
+---Indexes---
+  1. Clustered index -  Improves lookup performance and ensures efficient row retrieval.
+CREATE INDEX idx_ranger_id ON Ranger(ranger_id);
+CREATE INDEX idx_patrol_id ON Patrol(patrol_id);
+CREATE INDEX idx_incident_id ON Incident(incident_id);
+CREATE INDEX idx_report_id ON Report(report_id);
+CREATE INDEX idx_protected_area_id ON Protected_Area(protected_area_id);
+CREATE INDEX idx_wildlife_id ON Wildlife(wildlife_id);
+
+2. Foreign key indexing - Speeds up JOIN operations between tables.
+CREATE INDEX idx_patrol_ranger ON Patrol(ranger_id);
+CREATE INDEX idx_incident_patrol ON Incident(patrol_id);
+CREATE INDEX idx_report_incident ON Report(incident_id);
+CREATE INDEX idx_wildlife_protected_area ON Wildlife(area_id);
+
+3. Full-text indexing - Improves searches for descriptive reports and incident logs.
+CREATE FULLTEXT INDEX idx_report_text ON Report(details);
+CREATE FULLTEXT INDEX idx_incident_description ON Incident(description);
