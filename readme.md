@@ -1,51 +1,76 @@
-# Anti-Poaching
+# **Anti-Poaching Effort Management System Report**
 
-## Anti-Poaching Effort Management System
+**Github Link**  
+[https://github.com/onesmusmuna/anti-poaching](https://github.com/onesmusmuna/anti-poaching)
 
-## Todo
+1. # **Introduction**
 
-1. - [x] Project Idea Definition
-2. - [x] Entity-Relationship Diagram (ERD)
-3. - [x] Database Schema
-4. - [x] SQL Code Implementation
-5. - [x] GitHub Collaboration
-6. - [ ] Final Presentation and Report
+Kenya’s wildlife faces severe threats from poaching, illegal wildlife trafficking, and habitat destruction. Despite ongoing conservation efforts, the efficiency of anti-poaching operations is limited by issues such as uncoordinated patrol schedules, delayed incident reporting, and poor wildlife monitoring. These constraints hinder proactive responses and leave protected species at high risk.
 
----
+2. # **Problem Statement**
 
-## 1. Project Idea Definition
+Poaching remains one of the biggest threats to wildlife conservation in Kenya. Key challenges include:
 
-Kenya’s wildlife faces significant threats due to poaching, illegal wildlife trafficking, and habitat destruction. Despite ongoing efforts, challenges persist in coordinating anti-poaching operations efficiently, managing patrol schedules, recording incidents, and monitoring wildlife populations. Rangers often arrive too late at poaching sites, making enforcement reactive rather than preventive. Additionally, human-wildlife conflicts and the demand for land for agriculture and settlement exacerbate the problem.
+* Limited coordination among patrol teams  
+* Delayed incident reporting  
+* Inefficient wildlife monitoring systems
 
-The proposed Anti-Poaching Effort Management System aims to address these issues by creating a centralized database for Kenyan wildlife reserves. This system will:
+# **3\. Project Description**
 
-1. Schedule patrols to optimize ranger coverage.
-2. Record incident reports to track poaching trends and outcomes.
-3. Monitor wildlife populations to identify vulnerable species and areas needing urgent intervention.
+The Anti-Poaching Effort Management System aims to create a centralized database that will enhance wildlife conservation efforts in Kenya by improving data management, communication, and coordination.
 
-By improving data accessibility and coordination among conservation agencies, the system will contribute to the Sustainable Development Goal (SDG) 15 – Life on Land, which focuses on protecting, restoring, and promoting the sustainable use of terrestrial ecosystems. It aligns with Kenya’s commitment to wildlife conservation and the fight against illegal poaching.
+# **4\. Scope**
 
-### Scope
+* Develop a secure, scalable database for patrol schedules, incident reports, and wildlife monitoring.  
+* Integrate real-time data collection and reporting.  
+* Enable data-driven strategies for resource deployment.  
+* Support collaboration among rangers, conservationists, and law enforcement.
 
-- Developing a secure and scalable database to store and manage patrol schedules, incident reports, and wildlife monitoring data.
-- Integrating real-time data collection and reporting to enhance decision-making.
-- Enabling data-driven strategies to predict poaching hotspots and deploy resources efficiently.
-- Supporting collaboration between rangers, conservationists, and law enforcement for timely intervention.
+# 5\. Key Objectives
 
-### Key Objectives
+* Improve patrol coordination.  
+* Enhance data accuracy and standardization.  
+* Facilitate real-time communication.  
+* Strengthen wildlife monitoring capabilities.
 
-1. To improve patrol coordination by scheduling and tracking ranger activities.
-2. To enhance data accuracy through standardized reporting of poaching incidents.
-3. To facilitate real-time communication between rangers, reserve managers, and enforcement teams.
-4. To strengthen wildlife monitoring efforts by tracking population trends and habitat changes.
+# 6\. Stakeholders
 
-### Stakeholders
+* Wildlife Rangers  
+* Wildlife Reserve Managers  
+* Government Conservation Agencies (e.g., KWS)  
+* Law Enforcement & Anti-Poaching Units  
+* Conservation Organizations & NGOs  
+* Researchers & Ecologists
 
-- Wildlife Rangers: Will use the system to access patrol schedules, report incidents, and receive alerts on potential poaching threats.
-- Wildlife Reserve Managers: Will oversee operations, analyze data trends, and optimize resource allocation.
-- Government Conservation Agencies (Kenya Wildlife Service - KWS): Will utilize the data for policy-making and anti-poaching initiatives.
-- Law Enforcement & Anti-Poaching Units: Will use incident reports to investigate poaching activities and enforce regulations.
-- Conservation Organizations & NGOs: Will leverage wildlife monitoring data to advocate for conservation efforts and secure funding.
-- Researchers & Ecologists: Will access wildlife population data to study trends and recommend conservation strategies.
+# 7\. Database Schema
 
----
+The system utilizes structured relational database tables as follows:
+
+* Ranger (Ranger\_ID, Name, Contact\_Number, Rank, Assigned\_Area)  
+* Patrol (Patrol\_ID, Start\_time, End\_time, Area\_covered, Ranger\_ID)  
+* Incident (Incident\_ID, Date, Time, Location, Type, Severity, Description, Ranger\_ID)  
+* Report (Report\_ID, Suspect\_Description, Evidence\_Collected, Action\_Taken, Incident\_ID)  
+* Protected\_Area (Protected\_Area\_ID, Name, Location, Area\_Size, Threat\_Level)  
+* WildLife (WildLife\_ID, Species\_Name, Population\_Count, Conservation\_Status, Protected\_Area\_ID)
+
+# 8\. Sample Queries
+
+* Retrieve all rangers.  
+* Get wildlife species marked as 'Vulnerable'.  
+* Find severe incidents.  
+* Update and delete records.  
+* Perform joins to associate incidents with rangers and protected areas.  
+* Use subqueries to identify rangers assigned to specific areas.
+
+# 9\. Results and Impact
+
+The system will improve the efficiency of anti-poaching operations by ensuring timely patrols, accurate data collection, and centralized reporting. It will support conservation goals by identifying high-risk areas, enabling real-time collaboration, and promoting data-driven policy decisions.
+
+# 10\. Alignment with SDG 15
+
+This initiative supports Sustainable Development Goal 15 – Life on Land, by helping protect and restore wildlife habitats and combating poaching through technology-driven conservation.
+
+# 11\. Conclusion
+
+The Anti-Poaching Effort Management System is a critical tool in the fight against wildlife crime. Through effective coordination, real-time data management, and collaboration, the system contributes meaningfully to wildlife conservation efforts in Kenya.
+
